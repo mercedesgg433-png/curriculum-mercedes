@@ -1,0 +1,107 @@
+---
+const items = [
+  { left: 17.7, titulo: 'Bachillerato', sub: 'Ciencias Sociales y Humanidades', icono: 'cap' },
+  { left: 69.0, titulo: 'Curso de Programación', sub: 'en Python desde cero', icono: 'py' },
+  { left: 119.4, titulo: 'Desarrollo de Aplicaciones', sub: 'Web (DAW)', icono: 'web' },
+];
+---
+
+<section class="formacion" id="formacion">
+  <h2>Formación</h2>
+  <p class="intro">Lo que aparece es la formación que he tenido en los últimos cuatro años:</p>
+
+  {
+    items.map((it) => (
+      <div class="item" style={`left:${it.left}rem`}>
+        <svg viewBox="0 0 100 80" fill="none" stroke="#a8832f" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          {it.icono === 'cap' && (
+            <>
+              <rect x="22" y="34" width="56" height="30" rx="3" />
+              <path d="M12 68 H88" />
+              <path d="M42 44 l-7 6 7 6 M58 44 l7 6 -7 6 M52 42 l-4 16" />
+              <path d="M50 6 L80 17 L50 28 L20 17 Z M34 23 v8 q16 8 32 0 v-8" />
+            </>
+          )}
+          {it.icono === 'py' && (
+            <>
+              <rect x="22" y="26" width="56" height="38" rx="3" />
+              <path d="M12 68 H88" />
+              <text x="50" y="52" text-anchor="middle" font-size="20" font-family="Cormorant Garamond, serif" fill="#a8832f" stroke="none">Py</text>
+              <path d="M62 10 q10 0 10 8 q0 8 -10 8 h-8" />
+            </>
+          )}
+          {it.icono === 'web' && (
+            <>
+              <rect x="10" y="12" width="64" height="48" rx="4" />
+              <path d="M10 24 H74" />
+              <circle cx="42" cy="42" r="12" />
+              <ellipse cx="42" cy="42" rx="5" ry="12" />
+              <path d="M30 42 H54" />
+              <circle cx="76" cy="58" r="8" />
+              <circle cx="76" cy="58" r="3" />
+            </>
+          )}
+        </svg>
+        <strong>{it.titulo}</strong>
+        <span>{it.sub}</span>
+      </div>
+    ))
+  }
+</section>
+
+<style>
+  .formacion {
+    position: relative;
+    width: 172.8rem;
+    height: 109rem;
+    background: #f1e9dd;
+  }
+  h2 {
+    position: absolute;
+    top: 19.6rem;
+    left: 0;
+    right: 0;
+    margin: 0;
+    text-align: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 700;
+    font-size: 6.4rem;
+    line-height: normal;
+    color: #543c3c;
+  }
+  .intro {
+    position: absolute;
+    left: 42.2rem;
+    top: 26.7rem;
+    width: 87.4rem;
+    margin: 0;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.4rem;
+    color: #543c3c;
+  }
+  .item {
+    position: absolute;
+    top: 42rem;
+    width: 34rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    color: #543c3c;
+  }
+  .item svg {
+    width: 30rem;
+    height: 24rem;
+  }
+  .item strong {
+    margin-top: 1rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 700;
+    font-size: 2.4rem;
+  }
+  .item span {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+  }
+</style>

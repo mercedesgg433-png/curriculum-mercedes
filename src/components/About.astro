@@ -1,0 +1,76 @@
+---
+// "Sobre mí": foto + frase con flechas < >
+const frases = [
+  'Soy una persona sociable, comunicativa y con facilidad para relacionarme. Me adapto bien al trabajo en equipo, tengo iniciativa y una actitud positiva. ',
+  'Destaco por ser responsable, puntual y con muchas ganas de aprender.',
+];
+---
+
+<section class="sobre" id="sobre-mi">
+  <img class="foto" src="/img/foto.png" alt="Mercedes Gutiérrez" />
+  <button class="flecha izq" id="prev" aria-label="Anterior">&lt;</button>
+  <p class="frase" id="frase" data-frases={JSON.stringify(frases)}>{frases[0]}</p>
+  <button class="flecha der" id="next" aria-label="Siguiente">&gt;</button>
+</section>
+
+<style>
+  .sobre {
+    position: relative;
+    width: 172.8rem;
+    height: 108.8rem;
+    margin-top: -2.6rem;
+    background: #f5f3eb;
+  }
+  .foto {
+    position: absolute;
+    left: 8.9rem;
+    top: 13.8rem;
+    width: 50.9rem;
+    height: 76.4rem;
+    object-fit: cover;
+  }
+  .frase {
+    position: absolute;
+    left: 83.3rem;
+    top: 43.8rem;
+    width: 51.3rem;
+    margin: 0;
+    font-family: 'Allura', cursive;
+    font-size: 4rem;
+    line-height: normal;
+    color: #8a8b32;
+  }
+  .flecha {
+    position: absolute;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+    font-family: 'Abhaya Libre', serif;
+    font-weight: 700;
+    font-size: 9.6rem;
+    line-height: normal;
+    color: #543c3c;
+    opacity: 0.5;
+  }
+  .izq {
+    left: 65.6rem;
+    top: 48rem;
+  }
+  .der {
+    left: 146.4rem;
+    top: 47.9rem;
+  }
+</style>
+
+<script>
+  const frase = document.getElementById('frase');
+  const frases = JSON.parse(frase.dataset.frases);
+  let i = 0;
+  const mostrar = (n) => {
+    i = (n + frases.length) % frases.length;
+    frase.textContent = frases[i];
+  };
+  document.getElementById('prev').addEventListener('click', () => mostrar(i - 1));
+  document.getElementById('next').addEventListener('click', () => mostrar(i + 1));
+</script>
