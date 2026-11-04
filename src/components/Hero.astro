@@ -1,0 +1,129 @@
+---
+import Header from './Header.astro';
+import Leaves from './Leaves.astro';
+
+// "SOBRE MI" del botón: cada letra cae desde arriba (animación del Figma)
+const letras = 'SOBRE MI'.split('');
+---
+
+<section class="hero" id="inicio">
+  <Leaves />
+  <Leaves />
+  <Header />
+  <div class="logo">Mercedes Gutiérrez</div>
+  <h1 class="titulo">Mercedes Gutiérrez</h1>
+
+  <a class="boton" href="#sobre-mi">
+    <span class="texto" aria-label="Sobre mí">
+      {
+        letras.map((l, i) => (
+          <span class="letra" style={`--i:${i}`} aria-hidden="true">
+            {l === ' ' ? '\u00a0' : l}
+          </span>
+        ))
+      }
+    </span>
+  </a>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    width: 172.8rem;
+    height: 116.1rem;
+    overflow: hidden;
+    background: linear-gradient(
+      115deg,
+      #e9dfc9 0%,
+      #f7f3e8 14%,
+      #d8ccb0 28%,
+      #f8f4ea 44%,
+      #e0d4ba 60%,
+      #f4eedd 78%,
+      #d9cdb2 100%
+    );
+  }
+  .hero :global(svg) {
+    position: absolute;
+    width: 42rem;
+    opacity: 0.75;
+  }
+  .hero :global(svg:nth-of-type(1)) {
+    top: -2rem;
+    right: 0;
+    transform: scaleX(-1) rotate(-8deg);
+  }
+  .hero :global(svg:nth-of-type(2)) {
+    bottom: 0;
+    left: 0;
+    transform: rotate(-10deg);
+  }
+  .logo {
+    position: absolute;
+    top: 4.6rem;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 700;
+    font-size: 4.6rem;
+    line-height: 1;
+    text-transform: uppercase;
+    color: #a8832f;
+  }
+  .titulo {
+    position: absolute;
+    top: 48rem;
+    left: 0;
+    right: 0;
+    margin: 0;
+    text-align: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 700;
+    font-size: 13.2rem;
+    line-height: 1;
+    text-transform: uppercase;
+    background: linear-gradient(180deg, #c9a96e 0%, #9c7f4a 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .boton {
+    position: absolute;
+    left: 65.8rem;
+    top: 66rem;
+    width: 35.8rem;
+    height: 7.9rem;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f6eee6;
+    border: 1px solid #dee12c;
+    color: #543c3c;
+    text-decoration: none;
+  }
+  .texto {
+    font-family: 'ABeeZee', sans-serif;
+    font-size: 2.4rem;
+    white-space: nowrap;
+  }
+  .letra {
+    display: inline-block;
+    animation: caer 0.5s cubic-bezier(0, 0, 0.58, 1) both;
+    animation-delay: calc(var(--i) * 55.5ms);
+  }
+  @keyframes caer {
+    from {
+      transform: translateY(-4rem);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .letra {
+      animation: none;
+    }
+  }
+</style>

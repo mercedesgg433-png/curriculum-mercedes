@@ -1,0 +1,50 @@
+---
+interface Props {
+  title: string;
+}
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=ABeeZee&family=Abhaya+Libre:wght@600;700&family=Afacad:wght@400&family=Allura&family=Cormorant+Garamond:wght@700&family=Inter:wght@700&family=Montserrat:wght@400&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  /*
+    Escala del diseño: el Figma mide 1728 px de ancho.
+    Con este font-size, 1rem = 10 px de Figma, así que
+    24 px de Figma = 2.4rem, y todo escala con la ventana.
+  */
+  html {
+    font-size: calc(100vw / 172.8);
+    scroll-behavior: smooth;
+  }
+  body {
+    margin: 0;
+    overflow-x: hidden;
+    background: #f5f3eb;
+    color: #543c3c;
+  }
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+</style>
